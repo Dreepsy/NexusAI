@@ -1,0 +1,106 @@
+# NEXUS-AI Configuration File
+# Advanced AI-Powered Network Security Analysis Platform
+
+app:
+  name: "NexusAI"
+  version: "2.0.0"
+  environment: "development"
+  debug: false
+  secret_key: "your-secret-key-here"
+  session_type: "filesystem"
+
+paths:
+  data: "data"
+  models: "models"
+  logs: "logs"
+  cache: "cache"
+  reports: "reports"
+  exploits: "exploits"
+
+ai:
+  model:
+    type: "ensemble"
+    algorithms: ["random_forest", "neural_network", "gradient_boosting"]
+    confidence_threshold: 0.8
+    learning_rate: 0.01
+    max_iterations: 1000
+    model_path: "models/sample_model.pkl"
+  
+  learning:
+    enabled: true
+    batch_size: 100
+    update_frequency: 3600
+    max_samples: 10000
+    data_file: "data/learning_dataset.json"
+
+security:
+  validation:
+    strict_mode: true
+    max_file_size: "100MB"
+    allowed_extensions: [".xml", ".txt", ".csv", ".json"]
+  
+  encryption:
+    enabled: true
+    algorithm: "AES-256"
+    key_file: "config/encryption.key"
+
+performance:
+  cache_ttl: 3600
+  max_memory_usage: "2GB"
+  max_disk_size: "20GB"
+  concurrent_requests: 10
+
+monitoring:
+  health_check_interval: 60
+  metrics_retention_days: 30
+  alert_thresholds:
+    cpu_percent: 80
+    memory_percent: 85
+    disk_percent: 90
+
+threat_intelligence:
+  sources:
+    virustotal:
+      enabled: true
+      api_key: ""
+      rate_limit: 4
+    shodan:
+      enabled: true
+      api_key: ""
+      rate_limit: 1
+    abuseipdb:
+      enabled: true
+      api_key: ""
+      rate_limit: 2
+    otx:
+      enabled: true
+      api_key: ""
+      rate_limit: 2
+
+logging:
+  level: "INFO"
+  format: "json"
+  file: "logs/nexusai.log"
+  max_size: "10MB"
+  backup_count: 5
+
+web:
+  host: "0.0.0.0"
+  port: 5000
+  debug: false
+  cors_enabled: true
+  socketio_enabled: true
+
+cli:
+  output_format: "text"
+  verbose: false
+  save_reports: true
+  color_output: true
+
+labels:
+  normal: "Normal Traffic"
+  probe: "Network Probe/Scan"
+  dos: "Denial of Service"
+  r2l: "Remote to Local Attack"
+  u2r: "User to Root Attack"
+  exploits: "Exploit Attempt"

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error - NexusAI</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .error-animation {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <!-- Navigation -->
+    <nav class="gradient-bg text-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center">
+                    <i class="fas fa-shield-alt text-2xl mr-3"></i>
+                    <h1 class="text-2xl font-bold">NexusAI</h1>
+                    <span class="ml-3 px-2 py-1 bg-white bg-opacity-20 rounded-full text-sm">v2.0.0</span>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="/" class="px-4 py-2 bg-white bg-opacity-20 rounded-lg hover:bg-opacity-30 transition-all">
+                        <i class="fas fa-home mr-2"></i>Back to Dashboard
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Error Content -->
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div class="text-center">
+            <!-- Error Icon -->
+            <div class="mb-8">
+                <i class="fas fa-exclamation-triangle text-6xl text-red-500 error-animation"></i>
+            </div>
+
+            <!-- Error Message -->
+            <h1 class="text-4xl font-bold text-gray-900 mb-4">Oops! Something went wrong</h1>
+            <p class="text-xl text-gray-600 mb-8">We encountered an unexpected error while processing your request.</p>
+
+            <!-- Error Details -->
+            <div class="bg-white rounded-lg shadow-lg p-6 max-w-2xl mx-auto mb-8">
+                <h2 class="text-lg font-semibold text-gray-900 mb-4">
+                    <i class="fas fa-bug mr-2 text-red-500"></i>Error Details
+                </h2>
+                <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+                    <p class="text-red-800 font-mono text-sm break-all">{{ error }}</p>
+                </div>
+            </div>
+
+            <!-- Helpful Actions -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <i class="fas fa-refresh text-3xl text-blue-500 mb-4"></i>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Try Again</h3>
+                    <p class="text-gray-600 text-sm">Refresh the page and try your request again</p>
+                    <button onclick="location.reload()" class="mt-4 w-full bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+                        <i class="fas fa-sync-alt mr-2"></i>Refresh Page
+                    </button>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <i class="fas fa-home text-3xl text-green-500 mb-4"></i>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Go Home</h3>
+                    <p class="text-gray-600 text-sm">Return to the main dashboard</p>
+                    <a href="/" class="mt-4 w-full bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors inline-block text-center">
+                        <i class="fas fa-home mr-2"></i>Dashboard
+                    </a>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <i class="fas fa-heartbeat text-3xl text-purple-500 mb-4"></i>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Check Health</h3>
+                    <p class="text-gray-600 text-sm">Verify system status and configuration</p>
+                    <button onclick="checkSystemHealth()" class="mt-4 w-full bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition-colors">
+                        <i class="fas fa-heartbeat mr-2"></i>Health Check
+                    </button>
+                </div>
+            </div>
+
+            <!-- Troubleshooting Tips -->
+            <div class="bg-white rounded-lg shadow-lg p-6 max-w-4xl mx-auto">
+                <h2 class="text-lg font-semibold text-gray-900 mb-4">
+                    <i class="fas fa-lightbulb mr-2 text-yellow-500"></i>Troubleshooting Tips
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <h3 class="font-semibold text-gray-900 mb-2">Common Issues</h3>
+                        <ul class="text-sm text-gray-600 space-y-2">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mr-2 mt-1"></i>
+                                Check if all required services are running
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mr-2 mt-1"></i>
+                                Verify your configuration files are valid
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mr-2 mt-1"></i>
+                                Ensure you have proper permissions
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mr-2 mt-1"></i>
+                                Check system resources (CPU, memory, disk)
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-gray-900 mb-2">Next Steps</h3>
+                        <ul class="text-sm text-gray-600 space-y-2">
+                            <li class="flex items-start">
+                                <i class="fas fa-arrow-right text-blue-500 mr-2 mt-1"></i>
+                                Review the error details above
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-arrow-right text-blue-500 mr-2 mt-1"></i>
+                                Check system logs for more information
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-arrow-right text-blue-500 mr-2 mt-1"></i>
+                                Restart the NexusAI service if needed
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-arrow-right text-blue-500 mr-2 mt-1"></i>
+                                Contact support if the issue persists
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8 mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <p class="text-gray-400">
+                    <i class="fas fa-shield-alt mr-2"></i>
+                    NexusAI v2.0.0 - Advanced Security Analysis Platform
+                </p>
+                <p class="text-gray-500 text-sm mt-2">
+                    Built with ❤️ for the cybersecurity community
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Health Check Modal -->
+    <div id="healthModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50">
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div class="bg-white rounded-lg max-w-2xl w-full p-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-lg font-semibold">System Health Check</h3>
+                    <button onclick="hideHealthModal()" class="text-gray-500 hover:text-gray-700">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div id="healthContent" class="space-y-4">
+                    <div class="text-center">
+                        <div class="loading-spinner mx-auto mb-4"></div>
+                        <p>Checking system health...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function checkSystemHealth() {
+            const modal = document.getElementById('healthModal');
+            const content = document.getElementById('healthContent');
+            
+            modal.classList.remove('hidden');
+            content.innerHTML = `
+                <div class="text-center">
+                    <div class="loading-spinner mx-auto mb-4"></div>
+                    <p>Checking system health...</p>
+                </div>
+            `;
+            
+            fetch('/api/health')
+                .then(response => response.json())
+                .then(data => {
+                    content.innerHTML = generateHealthHTML(data);
+                })
+                .catch(error => {
+                    content.innerHTML = `
+                        <div class="text-center text-red-600">
+                            <i class="fas fa-exclamation-triangle text-3xl mb-4"></i>
+                            <p>Failed to load health data</p>
+                            <p class="text-sm text-gray-600 mt-2">${error.message}</p>
+                        </div>
+                    `;
+                });
+        }
+
+        function generateHealthHTML(data) {
+            const health = data.health;
+            if (!health) return '<p class="text-red-600">No health data available</p>';
+
+            let html = '<div class="space-y-4">';
+            
+            for (const [checkName, checkData] of Object.entries(health)) {
+                if (checkName === 'overall_status') continue;
+                
+                const status = checkData.status || 'unknown';
+                const statusClass = status === 'healthy' ? 'text-green-600' : 
+                                  status === 'warning' ? 'text-yellow-600' : 'text-red-600';
+                
+                html += `
+                    <div class="border rounded-lg p-4">
+                        <div class="flex items-center justify-between mb-2">
+                            <h4 class="font-semibold">${checkName.replace(/_/g, ' ').toUpperCase()}</h4>
+                            <span class="px-2 py-1 rounded text-sm font-semibold ${statusClass}">
+                                ${status.toUpperCase()}
+                            </span>
+                        </div>
+                        ${checkData.details ? `
+                            <div class="text-sm text-gray-600">
+                                ${Object.entries(checkData.details).map(([key, value]) => 
+                                    `<div>${key}: ${value}</div>`
+                                ).join('')}
+                            </div>
+                        ` : ''}
+                    </div>
+                `;
+            }
+            
+            html += '</div>';
+            return html;
+        }
+
+        function hideHealthModal() {
+            document.getElementById('healthModal').classList.add('hidden');
+        }
+
+        // Auto-refresh after 30 seconds if user is still on error page
+        setTimeout(() => {
+            if (document.visibilityState === 'visible') {
+                location.reload();
+            }
+        }, 30000);
+    </script>
+</body>
+</html>

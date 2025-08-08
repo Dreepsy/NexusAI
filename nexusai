@@ -1,0 +1,19 @@
+#!/bin/bash
+# NexusAI Launcher Script
+# This script makes it easy to run NexusAI from anywhere
+# I spent way too much time making this work reliably across different systems
+
+# NexusAI - AI-Powered Network Security Analysis Tool
+# Wrapper script to run NexusAI from anywhere
+
+# Get the directory where this script is located
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+# Change to the project directory
+cd "$SCRIPT_DIR"
+
+# Activate virtual environment
+source venv/bin/activate
+
+# Run the CLI directly with proper path
+PYTHONPATH="$SCRIPT_DIR/src:$PYTHONPATH" python -m nexus.cli.commands "$@" 
